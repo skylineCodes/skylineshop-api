@@ -79,6 +79,9 @@ const ProductScreen = ({ history, match }) => {
                     {product.price}
                   </ListGroup.Item>
                   <ListGroup.Item>
+                    Category: {product.category}
+                  </ListGroup.Item>
+                  <ListGroup.Item>
                     Description: {product.description}
                   </ListGroup.Item>
                 </ListGroup>

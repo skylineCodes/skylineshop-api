@@ -23,24 +23,31 @@ import {
   PRODUCT_TOP_FAIL,
 } from '../constants/productConstants.js';
 
-export const listProducts = (keyword = '', page = '') => async (dispatch) => {
-    try {
-        dispatch({
-            type: PRODUCT_LIST_REQUEST
-        });
+export const listProducts = (keyword = '', page = '', pageSize = '') => async (
+  dispatch
+) => {
+  try {
+    dispatch({
+      type: PRODUCT_LIST_REQUEST,
+    });
 
-        const { data } = await axios.get(`/api/products?keyword=${keyword}&page=${page}`);
+    const { data } = await axios.get(
+      `/api/products?keyword=${keyword}&page=${page}&pageSize=${pageSize}`
+    );
 
-        dispatch({
-            type: PRODUCT_LIST_SUCCESS,
-            payload: data
-        });
-    } catch (e) {
-        dispatch({
-            type: PRODUCT_LIST_FAIL,
-            payload: e.response && e.response.data.message ? e.response.data.message : e.message
-        });
-    }
+    dispatch({
+      type: PRODUCT_LIST_SUCCESS,
+      payload: data,
+    });
+  } catch (e) {
+    dispatch({
+      type: PRODUCT_LIST_FAIL,
+      payload:
+        e.response && e.response.data.message
+          ? e.response.data.message
+          : e.message,
+    });
+  }
 };
 
 export const listProductDetails = (id) => async (dispatch) => {

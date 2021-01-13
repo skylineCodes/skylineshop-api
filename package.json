@@ -1,5 +1,5 @@
 {
-  "name": "ProShop",
+  "name": "SkylineShop",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -15,16 +15,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/skylineCodes/ProShop.git"
+    "url": "git+https://github.com/skylineCodes/SkylineShop.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Onakoya Korede",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/skylineCodes/ProShop/issues"
+    "url": "https://github.com/skylineCodes/SkylineShop/issues"
   },
-  "homepage": "https://github.com/skylineCodes/ProShop#readme",
+  "homepage": "https://github.com/skylineCodes/SkylineShop#readme",
   "dependencies": {
+    "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "dotenv": "^8.2.0",
