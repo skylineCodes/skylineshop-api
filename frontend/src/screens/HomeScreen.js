@@ -6,7 +6,6 @@ import Collection from '../components/Collection';
 import Product from '../components/Product';
 import Message from '../components/Message.js';
 import Loader from '../components/Loader.js';
-import Paginate from '../components/Paginate.js';
 import Meta from '../components/Meta.js';
 import ProductCarousel from '../components/ProductCarousel.js';
 import { listProducts } from '../actions/productActions';
@@ -21,7 +20,7 @@ const HomeScreen = ({ match }) => {
     const dispatch = useDispatch();
 
     const productList = useSelector(state => state.productList);
-    const { loading, error, products, current_page, total_pages } = productList;
+    const { loading, error, products } = productList;
 
     useEffect(() => {
       dispatch(listProducts(keyword, page, pageSize));
@@ -63,11 +62,6 @@ const HomeScreen = ({ match }) => {
                   </Col>
                 ))}
               </Row>
-              {/* <Paginate
-                total_pages={total_pages}
-                current_page={current_page}
-                keyword={keyword ? keyword : ''}
-              /> */}
             </>
           )}
         </section>

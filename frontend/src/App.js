@@ -17,27 +17,14 @@ import ProductListScreen from './screens/ProductListScreen';
 import OrderListScreen from './screens/OrderListScreen';
 import ProductEditScreen from './screens/ProductEditScreen';
 import UserEditScreen from './screens/UserEditScreen';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    background: '#fff',
-    fontFamily: 'Nunito',
-    color: '#273647',
-  },
-  mainPage: {
-    paddingTop: '150px',
-  },
-}));
+import SearchScreen from './screens/SearchScreen';
 
 const App = () => {
-  const classes = useStyles();
-
   return (
-    <div className={classes.root}>
+    <div>
       <Router>
         <Header />
-        <main className={classes.mainPage}>
+        <main>
           <Container fluid>
             <Route path='/login' component={LoginScreen} />
             <Route path='/payment' component={PaymentScreen} />
@@ -65,12 +52,12 @@ const App = () => {
             <Route path='/profile' component={ProfileScreen} />
             <Route path='/product/:id' component={ProductScreen} />
             <Route path='/cart/:id?' component={CartScreen} />
-            <Route exact path='/search/:keyword' component={HomeScreen} />
+            <Route exact path='/search/:keyword' component={SearchScreen} />
             <Route exact path='/page/:page' component={HomeScreen} />
             <Route
               exact
               path='/search/:keyword/page/:page'
-              component={HomeScreen}
+              component={SearchScreen}
             />
             <Route exact path='/' component={HomeScreen} />
           </Container>

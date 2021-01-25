@@ -2,6 +2,11 @@ main {
     min-height: 80vh;
 }
 
+body {
+    color: #3d4246;
+    font-family: 'Lato';
+}
+
 h1 {
     font-size: 1.8rem;
     padding: 1rem 0;
@@ -168,6 +173,113 @@ h2 {
 
 .icon-box-center h2 {
     color: #273647;
+}
+
+.notification-bar {
+    background-color: #f5f5f5;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.notification-bar_message {
+    color: #3d4246;
+    padding: 10px 55px;
+    display: block;
+    font-weight: 600;
+    font-size: 12px !important;
+}
+
+.site-header {
+    background-color: #fff;
+    position: relative;
+    padding: 0 33px !important;
+    z-index: 999;
+}
+
+.navbar {
+    padding: 0 0 !important;
+}
+
+.navbar-brand {
+    padding: 0 0 !important;
+}
+
+.header-links {
+    margin-left: auto;
+}
+
+.header-icons {
+    margin-left: auto;
+    width: 35%;
+    justify-content: end;
+}
+
+.links_text {
+    color: #3d4246 !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+}
+
+.links_text:hover {
+    opacity: 0.6 !important;
+}
+
+.links_icons {
+    color: #3d4246 !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+}
+
+.login_cart {
+    margin-top: .5rem !important;
+}
+
+.links_icons:hover {
+    opacity: 0.6 !important;
+}
+
+.input-group-text {
+    padding: .5rem 1.5rem !important;
+}
+
+.form-group-div {
+    margin-bottom: 0 !important;
+}
+
+.form-group-span {
+    margin-top: .5rem;
+}
+
+.form-group-div i {
+    position: absolute;
+}
+
+.icon { 
+    /* padding: 15px; */
+    color: #3d4246; 
+    min-width: 50px; 
+    text-align: center; 
+} 
+
+.search-field {
+    width: 100%; 
+    /* padding: 10px;  */
+    text-align: center;
+    border: none;
+    height: 20px;
+}
+
+.search-field:focus {
+    outline: none;
+}
+
+.search-header {
+    transition: all 0.5s cubic-bezier(0.29, 0.63, 0.44, 1);
 }
 
 /** Android Screen */
