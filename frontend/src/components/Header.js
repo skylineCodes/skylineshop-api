@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Link as RouterLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Nav, Navbar, Badge } from 'react-bootstrap';
+import { Nav, Navbar, Badge, NavDropdown } from 'react-bootstrap';
 import { logout } from '../actions/userActions';
 import SearchBox from './SearchBox';
 import logo from '../SkylineCode-logo-png_logo.png';
@@ -83,15 +83,30 @@ const Header = () => {
                   )}
                 </Nav.Link>
                 {userInfo ? (
-                  // <Nav.Link className='links_icons login_cart'>
-                  //     {userInfo.name}
-                  // </Nav.Link>
-                  <Nav.Link
+                  <NavDropdown
+                    title={userInfo.name}
                     className='links_icons login_cart'
-                    onClick={logoutHandler}
                   >
-                    Log Out
-                  </Nav.Link>
+                    <LinkContainer to='/profile'>
+                      <NavDropdown.Item>Profile</NavDropdown.Item>
+                    </LinkContainer>
+                    {userInfo && userInfo.isAdmin && (
+                      <>
+                        <LinkContainer to='/admin/userlist'>
+                          <NavDropdown.Item>Users</NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to='/admin/productlist'>
+                          <NavDropdown.Item>Products</NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to='/admin/orderlist'>
+                          <NavDropdown.Item>Orders</NavDropdown.Item>
+                        </LinkContainer>
+                      </>
+                    )}
+                    <NavDropdown.Item onClick={logoutHandler}>
+                      Log Out
+                    </NavDropdown.Item>
+                  </NavDropdown>
                 ) : (
                   <Nav.Link
                     className='links_icons login_cart'
@@ -119,6 +134,11 @@ const Header = () => {
         </header>
       </>
 
+      // <NavDropdown title={userInfo.name} id='username'>
+      //   <LinkContainer to='/profile' >
+      //     <NavDropdown.Item>Profile</NavDropdown.Item>
+      //   </LinkContainer>
+      // </NavDropdown>
       // <header className={classes.root}>
       //   <div>
       //     <AppBar position='fixed' className={classes.navbar} elevation={0}>

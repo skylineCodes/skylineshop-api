@@ -211,7 +211,7 @@ h2 {
 
 .header-icons {
     margin-left: auto;
-    width: 35%;
+    width: 30%;
     justify-content: end;
 }
 
@@ -229,10 +229,12 @@ h2 {
 
 .links_icons {
     color: #3d4246 !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
     font-size: 15px !important;
     font-weight: 700 !important;
+}
+
+.nav-item {
+    margin-right: 0rem !important;
 }
 
 .login_cart {
@@ -280,6 +282,16 @@ h2 {
 
 .search-header {
     transition: all 0.5s cubic-bezier(0.29, 0.63, 0.44, 1);
+}
+
+.product-column {
+    height: 70vh;
+    text-align: center;
+}
+
+.product-image {
+    height: inherit;
+    width: auto;
 }
 
 /** Android Screen */

@@ -26,6 +26,7 @@ import {
   USER_UPDATE_FAIL
 } from '../constants/userConstants';
 import { ORDER_LIST_MY_RESET } from '../constants/orderConstants';
+import { CART_REMOVE_RESET } from '../constants/cartConstants';
 
 export const login = (email, password) => async (dispatch) => {
     try {
@@ -60,6 +61,7 @@ export const login = (email, password) => async (dispatch) => {
 
 export const logout = () => (dispatch) => {
     localStorage.removeItem('userInfo');
+    localStorage.removeItem('cartItems');
 
     dispatch ({
         type: USER_LOGOUT
@@ -72,6 +74,9 @@ export const logout = () => (dispatch) => {
     });
     dispatch({
       type: USER_LIST_RESET,
+    });
+    dispatch({
+      type: CART_REMOVE_RESET,
     });
 }
 
