@@ -307,4 +307,25 @@ h2 {
     .carousel-caption {
         display: none;
     }
+
+    .header-icons {
+        margin-right: auto;
+        width: 100%;
+    }
+
+    .links_icons {
+        color: #3d4246 !important;
+        /* padding-left: 1.5rem !important; */
+        padding-right: 1.5rem !important;
+        font-size: 15px !important;
+        font-weight: 700 !important;
+    }
+
+    .login_cart {
+        padding-left: 1.5rem;
+    }
+
+    .links_icons:hover {
+        opacity: 0.6 !important;
+    }
 }

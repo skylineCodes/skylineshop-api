@@ -8,6 +8,7 @@ import Loader from '../components/Loader';
 import Meta from '../components/Meta.js';
 import { listProductDetails, createProductReview } from '../actions/productActions';
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants';
+import { addToCart } from '../actions/cartActions';
 
 
 const ProductScreen = ({ history, match }) => {
@@ -36,6 +37,13 @@ const ProductScreen = ({ history, match }) => {
     }, [dispatch, match, successProductReview]);
 
     const addToCartHandler = () => {
+      dispatch(
+        addToCart({
+          product: match.params.id,
+          qty,
+        })
+      );
+
       history.push(`/cart/${match.params.id}?qty=${qty}`);
     };
 

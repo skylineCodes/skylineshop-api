@@ -7,6 +7,7 @@ import connectDB from './config/db.js';
 import products from './routes/products.js';
 import user from './routes/user.js';
 import order from './routes/order.js';
+import cart from './routes/cart.js';
 import upload from './routes/upload.js';
 import { notFound, errorHandler } from './middleware/middleware.js';
 
@@ -24,6 +25,7 @@ app.use(express.json());
 
 app.use('/api/products', products);
 app.use('/api/users', user);
+app.use('/api/cart', cart);
 app.use('/api/orders', order);
 app.use('/api/upload', upload);
 
