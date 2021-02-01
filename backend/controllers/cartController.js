@@ -25,7 +25,7 @@ const addCartItems = asyncHandler(async (req, res) => {
 // @route GET /api/carts
 // @access Private
 const getCartItems = asyncHandler(async (req, res) => {
-    const carts = await Cart.find({}).populate(['product', 'user']);
+    const carts = await Cart.find({ user: req.user._id }).populate(['product', 'user']);
 
     res.json(carts);
 });
