@@ -2,23 +2,14 @@ import React, { useEffect } from 'react';
 import { Route, Link as RouterLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Nav, Navbar, Badge, NavDropdown, Form, FormControl, Button, Col, Row } from 'react-bootstrap';
+import { Nav, Navbar, Badge, NavDropdown } from 'react-bootstrap';
 import { logout } from '../actions/userActions';
 import SearchBox from './SearchBox';
 import logo from '../SkylineCode-logo-png_logo.png';
 import { getAllCart } from '../actions/cartActions';
 
 const Header = () => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
   const [openSearch, setOpenSearch] = React.useState(false);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   const dispatch = useDispatch();
 
@@ -31,9 +22,6 @@ const Header = () => {
 
   const userLogin = useSelector(state => state.userLogin);
   const { userInfo } = userLogin;
-
-  // const cart = useSelector((state) => state.cart);
-  // const { cartItems } = cart;
 
    const cartQty = cartItems.reduce((a, b) => {
       return a + b.qty;

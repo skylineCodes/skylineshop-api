@@ -20,7 +20,7 @@ const Collection = () => {
               Pellentesque eu enim urna. Nulla facilisi. Mauris sit amet ligula
               varius, suscipit.
             </p>
-            <a href='#'>
+            <a href='/'>
               <span className='button-text'>See collections</span>
             </a>
           </div>
