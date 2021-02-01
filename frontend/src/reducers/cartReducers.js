@@ -3,6 +3,7 @@ import {
   CART_SAVE_SHIPPING_ADDRESS,
   ALL_CART_SUCCESS,
   CART_REMOVE_ITEM_SUCCESS,
+  CART_REMOVE_ITEM_RESET,
 } from '../constants/cartConstants';
 
 export const cartReducer = (state = { cartItems: [], shippingAddress: {} }, action) => {
@@ -18,6 +19,11 @@ export const cartReducer = (state = { cartItems: [], shippingAddress: {} }, acti
           cartItems: state.cartItems.filter(
             (x) => x._id !== action.payload.data
           ),
+        };
+      case CART_REMOVE_ITEM_RESET:
+        return {
+          ...state,
+          cartItems: []
         };
       case CART_SAVE_SHIPPING_ADDRESS:
         return {

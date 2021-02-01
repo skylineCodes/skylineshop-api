@@ -26,6 +26,10 @@ import {
   USER_UPDATE_FAIL
 } from '../constants/userConstants';
 import { ORDER_LIST_MY_RESET } from '../constants/orderConstants';
+import {
+  CART_REMOVE_ITEM_RESET,
+  ALL_CART_SUCCESS,
+} from '../constants/cartConstants';
 
 export const login = (email, password) => async (dispatch) => {
     try {
@@ -46,6 +50,20 @@ export const login = (email, password) => async (dispatch) => {
             payload: data
         });
 
+        const cartConfig = {
+          headers: {
+            Authorization: `Bearer ${data.token}`,
+          },
+        };
+
+        const cartData = await axios.get(`/api/cart`, cartConfig);
+
+
+        dispatch({
+          type: ALL_CART_SUCCESS,
+          payload: cartData.data,
+        });
+
         localStorage.setItem('userInfo', JSON.stringify(data))
     } catch (e) {
         dispatch({
@@ -60,7 +78,6 @@ export const login = (email, password) => async (dispatch) => {
 
 export const logout = () => (dispatch) => {
     localStorage.removeItem('userInfo');
-    localStorage.removeItem('cartItems');
 
     dispatch ({
         type: USER_LOGOUT
@@ -73,6 +90,9 @@ export const logout = () => (dispatch) => {
     });
     dispatch({
       type: USER_LIST_RESET,
+    });
+    dispatch({
+      type: CART_REMOVE_ITEM_RESET,
     });
 }
 
