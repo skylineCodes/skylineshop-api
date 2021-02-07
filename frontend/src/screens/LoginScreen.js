@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,72 +6,204 @@ import Message from '../components/Message';
 import Loader from '../components/Loader';
 import FormContainer from '../components/FormContainer';
 import { login } from '../actions/userActions';
+import { register } from '../actions/userActions';
+import '../login.css';
 
 const LoginScreen = ({ location, history }) => {
+    // Login Credentials
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    // Register Credentials
+    const [name, setName] = useState('');
+    // const [email, setEmail] = useState('');
+    // const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [message, setMessage] = useState(null);
+
     const dispatch = useDispatch();
 
+    const userRegister = useSelector((state) => state.userRegister);
+    const { loading:loadingRegister, userInfo:userInfoRegister } = userRegister;
+
+    console.log(userInfoRegister);
     const userLogin = useSelector(state => state.userLogin);
-    const { loading, error, userInfo } = userLogin;
+    const { loading:loadingLogin, error, userInfo:userLoginInfo } = userLogin;
 
     const redirect = location.search ? location.search.split('=')[1] : '/';
 
     useEffect(() => {
-        if (userInfo) {
+        if (userInfoRegister) {
             history.push(redirect)
         }
-    }, [history, userInfo, redirect]);
 
-    const submitHandler = (e) => {
-        e.preventDefault();
+        if (userLoginInfo) {
+          history.push(redirect);
+        }
+    }, [history, userInfoRegister, userLoginInfo, redirect]);
 
-        dispatch(login(email, password));
-    }
+    const submitLoginHandler = (e) => {
+      e.preventDefault();
+
+      dispatch(login(email, password));
+    };
+
+    const submitRegisterHandler = (e) => {
+      e.preventDefault();
+
+      if (password !== confirmPassword) {
+        setMessage('Password do not match!');
+      } else {
+        dispatch(register(name, email, password));
+      }
+    };
+
+    const container = useRef();
 
     return (
-      <FormContainer>
-        <h1>Sign In</h1>
-        {error && <Message variant='danger'>{error}</Message>}
-        {loading && <Loader />}
-        <Form onSubmit={submitHandler}>
-          <Form.Group controlId='email'>
-            <Form.Label>Email Address</Form.Label>
-            <Form.Control
-              type='email'
-              placeholder='Enter email'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
+      <div ref={container} class='containers'>
+        <div class='forms-container'>
+          <div class='signin-signup'>
+            {error && <Message variant='danger'>{error}</Message>}
+            {loadingLogin && <Loader />}
+            <Form onSubmit={submitLoginHandler} className='sign-in-form'>
+              <h2 class='title'>Sign in</h2>
+              <div class='input-field'>
+                <i class='fas fa-envelope'></i>
+                <input
+                  type='email'
+                  placeholder='Enter Email'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+              <div class='input-field'>
+                <i class='fas fa-lock'></i>
+                <input
+                  type='password'
+                  placeholder='Enter password'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+              <input type='submit' value='Login' class='btn solid' />
+              <p class='social-text'>Or Sign in with social platforms</p>
+              <div class='social-media'>
+                <a href='#' class='social-icon'>
+                  <i class='fab fa-facebook-f'></i>
+                </a>
+                <a href='#' class='social-icon'>
+                  <i class='fab fa-twitter'></i>
+                </a>
+                <a href='#' class='social-icon'>
+                  <i class='fab fa-google'></i>
+                </a>
+                <a href='#' class='social-icon'>
+                  <i class='fab fa-linkedin-in'></i>
+                </a>
+              </div>
+            </Form>
+            {message && <Message variant='danger'>{message}</Message>}
+            {loadingRegister && <Loader />}
+            <Form onSubmit={submitRegisterHandler} className='sign-up-form'>
+              <h2 class='title'>Sign up</h2>
+              <div class='input-field'>
+                <i class='fas fa-user'></i>
+                <input
+                  type='name'
+                  placeholder='Enter name'
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+              <div class='input-field'>
+                <i class='fas fa-envelope'></i>
+                <input
+                  type='email'
+                  placeholder='Enter email'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+              <div class='input-field'>
+                <i class='fas fa-lock'></i>
+                <input
+                  type='password'
+                  placeholder='Enter password'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+              <div class='input-field'>
+                <i class='fas fa-lock'></i>
+                <input
+                  type='password'
+                  placeholder='Confirm password'
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+              </div>
+              <input type='submit' class='btn' value='Sign up' />
+              <p class='social-text'>Or Sign up with social platforms</p>
+              <div class='social-media'>
+                <a href='#' class='social-icon'>
+                  <i class='fab fa-facebook-f'></i>
+                </a>
+                <a href='#' class='social-icon'>
+                  <i class='fab fa-twitter'></i>
+                </a>
+                <a href='#' class='social-icon'>
+                  <i class='fab fa-google'></i>
+                </a>
+                <a href='#' class='social-icon'>
+                  <i class='fab fa-linkedin-in'></i>
+                </a>
+              </div>
+            </Form>
+          </div>
+        </div>
 
-          <Form.Group controlId='password'>
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type='password'
-              placeholder='Enter password'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-
-          <Button type='submit' variant='primary'>
-            Sign In
-          </Button>
-        </Form>
-
-        <Row className='py-3'>
-          <Col>
-            New Customer?{' '}
-            <Link
-              to={redirect ? `/register?redirect=${redirect}` : '/register'}
-            >
-              Register
-            </Link>
-          </Col>
-        </Row>
-      </FormContainer>
+        <div class='panels-container'>
+          <div class='panel left-panel'>
+            <div class='content'>
+              <h3>New here?</h3>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Debitis, ex ratione. Aliquid!
+              </p>
+              <button
+                onClick={() => {
+                  container.current.classList.add('sign-up-mode');
+                }}
+                class='btn transparent'
+                id='sign-up-btn'
+              >
+                Sign up
+              </button>
+            </div>
+            <img src='../images/log.svg' class='image' alt='' />
+          </div>
+          <div class='panel right-panel'>
+            <div class='content'>
+              <h3>One of us?</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
+                laboriosam ad deleniti.
+              </p>
+              <button
+                onClick={() => {
+                  container.current.classList.remove('sign-up-mode');
+                }}
+                class='btn transparent'
+                id='sign-in-btn'
+              >
+                Sign in
+              </button>
+            </div>
+            <img src='../images/register.svg' class='image' alt='' />
+          </div>
+        </div>
+      </div>
     );
 }
 

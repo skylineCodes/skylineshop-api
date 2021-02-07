@@ -1,0 +1,58 @@
+button.navbar-toggler {
+    background: #fff;
+}
+
+.search_div {
+    display: none;
+}
+
+/** Android Screen */
+@media only screen and (max-width: 992px) {
+    button.navbar-toggler {
+        position: absolute;
+        z-index: 3;
+        left: 0;
+        top: 20px;
+        border: none;
+    }
+
+    button.navbar-toggler.closed {
+        display: inline;
+    }
+
+    .navbar-brand {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .search_div {
+        right: 0;
+        z-index: 3;
+        display: block;
+    }
+
+    .form-group-div {
+        width: 100%
+    }
+
+    .search-header {
+        width: 90%;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+
+    .form-group-span .fa-times {
+        position: absolute;
+        right: 0;
+        top: 15px;
+        font-size: 1.5rem;
+        width: 10%;
+        color: #273647;
+    }
+
+    .search_icon .fa-search {
+        font-size: 1rem;
+    }
+}

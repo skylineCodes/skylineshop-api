@@ -14,19 +14,20 @@ const SearchBox = ({ history }) => {
   };
 
   return (
-    <Form onSubmit={submitHandler} className='search-header'>
-      <div class='form-group-div'>
-        {/* <i class='fas fa-search icon'></i> */}
-        <input
-          class='search-field'
-          type='text'
-          name='q'
-          placeholder='Search Products'
-          onChange={(e) => setKeyword(e.target.value)}
-        />
-      </div>
-    </Form>
+    <>
+        <Form onSubmit={submitHandler} className='search-header'>
+          <div class='form-group-div'>
+            <input
+              class='search-input'
+              type='text'
+              name='q'
+              placeholder='Search Products'
+              onChange={(e) => setKeyword(e.target.value)}
+            />
+          </div>
+        </Form>
+    </>
   );
 };
 
-export default SearchBox
+export default SearchBox;
