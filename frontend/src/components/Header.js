@@ -12,8 +12,6 @@ import '../header.css';
 const Header = () => {
   const [openSearch, setOpenSearch] = React.useState(false);
 
-  console.log(openSearch);
-
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
@@ -35,8 +33,10 @@ const Header = () => {
 
       if (value === true) {
         searchDiv.current.style.width = '100%';
+        siteHeader.current.style.height = '3.3rem';
       } else {
         searchDiv.current.style.width = '';
+        siteHeader.current.style.height = '4.5rem';
       }
     };
 
@@ -45,6 +45,7 @@ const Header = () => {
   }
 
   const searchDiv = useRef();
+  const siteHeader = useRef();
 
     return (
       <>
@@ -53,18 +54,16 @@ const Header = () => {
             Free Shipping & Free Returns
           </span>
         </div>
-        <header className='site-header'>
+        <header ref={siteHeader} className='site-header'>
           <div>
             <Navbar className='navbar' expand='lg'>
               {!openSearch && (
-              <Navbar.Brand as={RouterLink} to='/'>
-                <img src={logo} alt='SkylineShop' height='80' width='200' />
-              </Navbar.Brand>
+                <Navbar.Brand as={RouterLink} to='/'>
+                  <img src={logo} alt='SkylineShop' height='80' width='200' />
+                </Navbar.Brand>
               )}
               {!openSearch && (
-              <Navbar.Toggle
-                aria-controls='basic-navbar-nav'
-              />
+                <Navbar.Toggle aria-controls='basic-navbar-nav' />
               )}
               <Navbar.Collapse id='basic-navbar-nav'>
                 <Nav className='header-links'>
@@ -158,6 +157,11 @@ const Header = () => {
                         class='fas fa-times'
                         onClick={() => openSearchFunction(false)}
                       ></i>
+                      {/* <a>
+                        <i class='fas fa-search'
+                          // onClick={() => openSearchFunction(true)}
+                        ></i>
+                      </a> */}
                     </div>
                   ) : (
                     <div class='search_icon'>

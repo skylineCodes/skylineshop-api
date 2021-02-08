@@ -198,6 +198,7 @@ h2 {
     position: relative;
     padding: 0 33px !important;
     z-index: 999;
+    height: 4.5rem;
 }
 
 .navbar {
@@ -265,7 +266,6 @@ h2 {
 }
 
 .icon { 
-    /* padding: 15px; */
     color: #3d4246; 
     min-width: 50px; 
     text-align: center; 
