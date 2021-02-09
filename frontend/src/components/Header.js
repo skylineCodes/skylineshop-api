@@ -156,9 +156,11 @@ const Header = () => {
                     </NavDropdown>
                   </Nav>
                 ) : (
+                  <Nav className='header-links'>
                   <Nav.Link className='links_icons' as={RouterLink} to='/login'>
                     Log In
                   </Nav.Link>
+                  </Nav>
                 )}
                 <Nav.Link className='links_icons' as={RouterLink} to='/cart'>
                   <span>
