@@ -29,7 +29,7 @@ const SearchBox = ({ history }) => {
             class='search-input'
             type='text'
             name='q'
-            placeholder='Search Products'
+            placeholder='Search'
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
           />

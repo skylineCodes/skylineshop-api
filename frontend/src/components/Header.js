@@ -11,6 +11,7 @@ import '../header.css';
 
 const Header = () => {
   const [openSearch, setOpenSearch] = React.useState(false);
+  const [openSearchDesktop, setOpenSearchDesktop] = React.useState(false);
 
   const dispatch = useDispatch();
 
@@ -33,10 +34,23 @@ const Header = () => {
 
       if (value === true) {
         searchDiv.current.style.width = '100%';
-        siteHeader.current.style.height = '3.3rem';
+        searchDiv.current.style.top = '0';
+        siteHeader.current.style.height = '4rem';
       } else {
+        siteHeader.current.style.height = 'auto';
         searchDiv.current.style.width = '';
-        siteHeader.current.style.height = '4.5rem';
+        searchDiv.current.style.top = '20px';
+      }
+    };
+
+    const openSearchDesktopFunction = (value) => {
+      setOpenSearchDesktop(value);
+
+      if (value === true) {
+        headerLinks.current.style.marginRight = '-19rem';
+      } else {
+        headerLinks.current.style.marginLeft = 'auto';
+        headerLinks.current.style.marginRight = 'inherit';
       }
     };
 
@@ -46,6 +60,7 @@ const Header = () => {
 
   const searchDiv = useRef();
   const siteHeader = useRef();
+  const headerLinks = useRef();
 
     return (
       <>
@@ -66,7 +81,7 @@ const Header = () => {
                 <Navbar.Toggle aria-controls='basic-navbar-nav' />
               )}
               <Navbar.Collapse id='basic-navbar-nav'>
-                <Nav className='header-links'>
+                <Nav ref={headerLinks} className='header-links'>
                   <Nav.Link className='links_text' as={RouterLink} to='/'>
                     Home
                   </Nav.Link>
@@ -77,65 +92,75 @@ const Header = () => {
                     Blog
                   </Nav.Link>
                 </Nav>
-                {/* <Nav className='header-icons'>
-                  <Nav.Link className='links_icons'>
-                    {openSearch ? (
-                      <div class='form-group-span'>
-                        <Route
-                          render={({ history }) => (
-                            <SearchBox history={history} />
-                          )}
-                        />
-                      </div>
-                    ) : (
-                      <div class='login_cart'>
-                        <i
-                          class='fas fa-search'
-                          onClick={() => openSearchFunction(true)}
-                        ></i>
-                      </div>
-                    )}
-                  </Nav.Link>
-                </Nav> */}
                 {userInfo ? (
-                  <NavDropdown
-                    title={userInfo.name}
-                    className='links_icons login_cart'
-                  >
-                    <LinkContainer to='/profile'>
-                      <NavDropdown.Item>Profile</NavDropdown.Item>
-                    </LinkContainer>
-                    {userInfo && userInfo.isAdmin && (
-                      <>
-                        <LinkContainer to='/admin/userlist'>
-                          <NavDropdown.Item>Users</NavDropdown.Item>
-                        </LinkContainer>
-                        <LinkContainer to='/admin/productlist'>
-                          <NavDropdown.Item>Products</NavDropdown.Item>
-                        </LinkContainer>
-                        <LinkContainer to='/admin/orderlist'>
-                          <NavDropdown.Item>Orders</NavDropdown.Item>
-                        </LinkContainer>
-                      </>
+                  <Nav className='header-links'>
+                    {openSearchDesktop ? (
+                      <Nav.Link className='d-none d-lg-block d-xxl-none search_link'>
+                        <div class='form-group-span'>
+                          <Route
+                            render={({ history }) => (
+                              <SearchBox history={history} />
+                            )}
+                          />
+                          <i
+                            class='fas fa-times'
+                            onClick={() => openSearchDesktopFunction(false)}
+                          ></i>
+                        </div>
+                      </Nav.Link>
+                    ) : (
+                      <Nav.Link className='d-none d-lg-block d-xxl-none search_link'>
+                        <div class='form-group-span'>
+                          <i
+                            class='fas fa-search search'
+                            onClick={() => openSearchDesktopFunction(true)}
+                          ></i>
+                        </div>
+                      </Nav.Link>
                     )}
-                    <NavDropdown.Item onClick={logoutHandler}>
-                      Log Out
-                    </NavDropdown.Item>
-                  </NavDropdown>
+                    <NavDropdown
+                      title={userInfo.name}
+                      className='links_icons'
+                      id='basic-nav-dropdown'
+                    >
+                      <LinkContainer to='/profile'>
+                        <NavDropdown.Item className='links_text'>
+                          Profile
+                        </NavDropdown.Item>
+                      </LinkContainer>
+                      {userInfo && userInfo.isAdmin && (
+                        <>
+                          <LinkContainer to='/admin/userlist'>
+                            <NavDropdown.Item className='links_text'>
+                              Users
+                            </NavDropdown.Item>
+                          </LinkContainer>
+                          <LinkContainer to='/admin/productlist'>
+                            <NavDropdown.Item className='links_text'>
+                              Products
+                            </NavDropdown.Item>
+                          </LinkContainer>
+                          <LinkContainer to='/admin/orderlist'>
+                            <NavDropdown.Item className='links_text'>
+                              Orders
+                            </NavDropdown.Item>
+                          </LinkContainer>
+                        </>
+                      )}
+                      <NavDropdown.Item
+                        className='links_text'
+                        onClick={logoutHandler}
+                      >
+                        Log Out
+                      </NavDropdown.Item>
+                    </NavDropdown>
+                  </Nav>
                 ) : (
-                  <Nav.Link
-                    className='links_icons login_cart'
-                    as={RouterLink}
-                    to='/login'
-                  >
+                  <Nav.Link className='links_icons' as={RouterLink} to='/login'>
                     Log In
                   </Nav.Link>
                 )}
-                <Nav.Link
-                  className='links_icons login_cart'
-                  as={RouterLink}
-                  to='/cart'
-                >
+                <Nav.Link className='links_icons' as={RouterLink} to='/cart'>
                   <span>
                     <i class='fas fa-shopping-cart'></i>
                     <Badge pill variant='danger'>
@@ -157,14 +182,9 @@ const Header = () => {
                         class='fas fa-times'
                         onClick={() => openSearchFunction(false)}
                       ></i>
-                      {/* <a>
-                        <i class='fas fa-search'
-                          // onClick={() => openSearchFunction(true)}
-                        ></i>
-                      </a> */}
                     </div>
                   ) : (
-                    <div class='search_icon'>
+                    <div class='search_icon_mobile'>
                       <i
                         class='fas fa-search'
                         onClick={() => openSearchFunction(true)}

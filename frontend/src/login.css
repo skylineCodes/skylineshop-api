@@ -32,7 +32,7 @@
   z-index: 5;
 }
 
-form {
+.signin-signup form {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -125,7 +125,7 @@ form.sign-in-form {
   border-color: #4481eb;
 }
 
-.btn {
+button .btn {
   width: 150px;
   background-color: #5995fd;
   border: none;
@@ -140,7 +140,7 @@ form.sign-in-form {
   transition: 0.5s;
 }
 
-.btn:hover {
+button .btn:hover {
   background-color: #4d84e2;
 }
 
@@ -210,7 +210,7 @@ form.sign-in-form {
   padding: 0.7rem 0;
 }
 
-.btn.transparent {
+button .btn.transparent {
   margin: 0;
   background: none;
   border: 2px solid #fff;
@@ -326,7 +326,7 @@ form.sign-in-form {
     padding: 0.5rem 0;
   }
 
-  .btn.transparent {
+  button .btn.transparent {
     width: 110px;
     height: 35px;
     font-size: 0.7rem;

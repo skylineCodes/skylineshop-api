@@ -1,9 +1,77 @@
+.search-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0rem 5rem;
+    transition: all 0.2s 0.7s;
+    overflow: hidden;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
 button.navbar-toggler {
     background: #fff;
 }
 
 .search_div {
     display: none;
+}
+
+.search-header {
+    width: 95%;
+    height: 1.5rem;
+    transition: all 0.5s cubic-bezier(0.29, 0.63, 0.44, 1);
+}
+
+.form-group-div {
+    width: 90%;
+    height: inherit;
+}
+
+.search-input {
+    width: 100%;
+}
+
+.form-group-span {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.form-group-div .fa-search {
+    position: absolute;
+    top: auto;
+    font-size: 1rem;
+    width: 5%;
+    height: inherit;
+    background: #273647;
+    text-align: center;
+    padding: 3px 3px;
+    color: #fff;
+}
+
+.form-group-span .search {
+    position: absolute;
+    top: auto;
+    font-size: 1rem;
+    width: 5%;
+    color: #273647;
+}
+
+.form-group-span .fa-times {
+    position: absolute;
+    right: 7.5rem;
+    top: auto;
+    font-size: 1rem;
+    width: 5%;
+    color: #273647;
+    padding: 3px 3px;
+}
+
+.navbar-nav .nav-link {
+    color: #3d4246 !important;
+    padding-top: 1.5rem !important;
 }
 
 /** Android Screen */
@@ -26,6 +94,8 @@ button.navbar-toggler {
     }
 
     .search_div {
+        position: absolute;
+        top: 20px;
         right: 0;
         z-index: 3;
         display: block;
@@ -68,8 +138,13 @@ button.navbar-toggler {
         color: #fff;
     }
 
-    .search_icon .fa-search {
+    .search_icon_mobile .fa-search {
         font-size: 1rem;
+    }
+    
+    .navbar-nav .nav-link {
+        color: #3d4246 !important;
+        padding-top: 1rem !important;
     }
 }
 
