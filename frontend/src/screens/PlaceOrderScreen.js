@@ -9,13 +9,14 @@ import { createOrder } from '../actions/orderActions';
 const PlaceOrderScreen = ({ history }) => {
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart);
+    const { cartItems } = cart;
 
     const addDecimals = (num) => {
         return (Math.round(num * 100) / 100).toFixed(2);
     };
 
     // Calculate prices
-    cart.itemsPrice = addDecimals(cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0));
+    cart.itemsPrice = addDecimals(cartItems.reduce((acc, item) => acc + item.product.price * item.qty, 0));
     
     cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 100);
 
@@ -35,7 +36,14 @@ const PlaceOrderScreen = ({ history }) => {
 
     const placeOrderHandler = () => {
         dispatch(createOrder({
-          orderItems: cart.cartItems,
+          orderItems: cartItems.map((item) => {
+            return { name: item.product.name, 
+                         qty: item.qty,
+                         product: item.product._id,
+                         image: item.product.image,
+                         price: item.product.price
+            }
+          }),
           shippingAddress: cart.shippingAddress,
           paymentMethod: cart.paymentMethod,
           itemsPrice: cart.itemsPrice,
@@ -45,8 +53,8 @@ const PlaceOrderScreen = ({ history }) => {
         }));
     };
 
-    const roundPrice = ({ qty, price }) => {
-        const num = qty * price;
+    const roundPrice = ({ qty, product }) => {
+        const num = qty * product.price;
 
         return num.toFixed(2)
     };
@@ -75,28 +83,28 @@ const PlaceOrderScreen = ({ history }) => {
 
               <ListGroup.Item>
                 <h2>Order Items</h2>
-                {cart.cartItems.length === 0 ? (
+                {cartItems.length === 0 ? (
                   <Message>Your cart is empty</Message>
                 ) : (
                   <ListGroup variant='flush'>
-                    {cart.cartItems.map((item, index) => (
+                    {cartItems.map((item, index) => (
                       <ListGroup.Item key={index}>
                         <Row>
                           <Col md={1}>
                             <Image
-                              src={item.image}
-                              alt={item.name}
+                              src={item.product.image}
+                              alt={item.product.name}
                               fluid
                               rounded
                             />
                           </Col>
                           <Col>
-                            <Link to={`/product/${item.product}`}>
-                              {item.name}
+                            <Link to={`/product/${item.product._id}`}>
+                              {item.product.name}
                             </Link>
                           </Col>
                           <Col md={4}>
-                            {item.qty} x &#8358;{item.price} = &#8358;
+                            {item.qty} x &#8358;{item.product.price} = &#8358;
                             {roundPrice(item)}
                           </Col>
                         </Row>
@@ -146,7 +154,7 @@ const PlaceOrderScreen = ({ history }) => {
                   <Button
                     types='button'
                     className='btn-block'
-                    disabled={cart.cartItems === 0}
+                    disabled={cartItems === 0}
                     onClick={placeOrderHandler}
                   >
                     Place Order
