@@ -6,6 +6,7 @@ import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import BlogScreen from './screens/BlogScreen';
 import CartScreen from './screens/CartScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import ShippingScreen from './screens/ShippingScreen';
@@ -26,6 +27,7 @@ const App = () => {
         <Header />
         <main>
           <Container fluid>
+            <Route path='/blog' component={BlogScreen} />
             <Route path='/login' component={LoginScreen} />
             <Route path='/payment' component={PaymentScreen} />
             <Route path='/admin/userlist' component={UserListScreen} />

@@ -7,7 +7,7 @@ import { logout } from '../actions/userActions';
 import SearchBox from './SearchBox';
 import logo from '../SkylineCode-logo-png_logo.png';
 import { getAllCart } from '../actions/cartActions';
-import '../header.css';
+import '../css/header.css';
 
 const Header = () => {
   const [openSearch, setOpenSearch] = React.useState(false);
@@ -47,7 +47,7 @@ const Header = () => {
       setOpenSearchDesktop(value);
 
       if (value === true) {
-        headerLinks.current.style.marginRight = '-19rem';
+        headerLinks.current.style.marginRight = '-23rem';
       } else {
         headerLinks.current.style.marginLeft = 'auto';
         headerLinks.current.style.marginRight = 'inherit';
@@ -88,7 +88,7 @@ const Header = () => {
                   <Nav.Link className='links_text' href='#shop'>
                     Shop
                   </Nav.Link>
-                  <Nav.Link className='links_text' href='#blog'>
+                  <Nav.Link className='links_text' as={RouterLink} to='/blog'>
                     Blog
                   </Nav.Link>
                 </Nav>

@@ -9,7 +9,7 @@ import Loader from '../components/Loader.js';
 import Meta from '../components/Meta.js';
 import ProductCarousel from '../components/ProductCarousel.js';
 import { listProducts } from '../actions/productActions';
-import '../home.css';
+import '../css/home.css';
 
 const HomeScreen = ({ match }) => {
   const keyword = match.params.keyword;
