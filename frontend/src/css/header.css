@@ -157,4 +157,8 @@ button.navbar-toggler {
     .form-group-div .fa-search {
         width: auto;
     }
+
+    .form-group-span .fa-times {
+        margin-right: 2rem;
+    }
 }
