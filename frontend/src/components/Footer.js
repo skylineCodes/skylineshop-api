@@ -9,7 +9,7 @@ const Footer = () => {
       <footer>
         <Container className='footer-container'>
           <Row className='footer-row'>
-            <Col>
+            <Col xs={12} sm={12} lg={4} className='footer-column'>
               <span>SkylineShop</span>
               <ul>
                 <li>Product tour</li>
@@ -18,14 +18,14 @@ const Footer = () => {
                 <li>Pricing</li>
               </ul>
             </Col>
-            <Col>
+            <Col xs={12} sm={12} lg={4} className='footer-column'>
               <span>Resources</span>
               <ul>
                 <li>Blog</li>
                 <li>Support</li>
               </ul>
             </Col>
-            <Col>
+            <Col xs={12} sm={12} lg={4} className='footer-column'>
               <span>Compliance</span>
               <ul>
                 <li>Terms of service</li>
@@ -34,7 +34,7 @@ const Footer = () => {
                 <li>Cookie info</li>
               </ul>
             </Col>
-            <Col>
+            <Col xs={12} sm={12} lg={4} className='footer-column'>
               <span>Company</span>
               <ul>
                 <li>About Us</li>
@@ -44,13 +44,13 @@ const Footer = () => {
             </Col>
           </Row>
           <Row className='copyright-row'>
-            <Col className='logo' as={Link} to='/'>
+            <Col xs={12} sm={12} lg={4} className='logo' as={Link} to='/'>
               <img src={logo} alt='SkylineShop' height='100' width='200' />
             </Col>
-            <Col className='text-center py-3 text'>
+            <Col xs={12} sm={12} lg={4} className='text-center py-3 text'>
               Copyright &copy; 2014 - 2021 SkylineShop Ltd. All rights reserved.
             </Col>
-            <Col className='text-center py-3'>
+            <Col xs={12} sm={12} lg={4} className='text-center py-3'>
               <section className='social_links'>
                 <a>
                   <i class='fab fa-facebook-f'></i>

@@ -149,6 +149,10 @@ button.navbar-toggler {
 }
 
 @media only screen and (max-width: 701px) {
+    .navbar-brand {
+        width: 100%;
+    }
+
     .search-input {
         width: 70%;
         height: 33px;
@@ -160,5 +164,9 @@ button.navbar-toggler {
 
     .form-group-span .fa-times {
         margin-right: 2rem;
+    }
+
+    .search_div {
+        top: 15px;
     }
 }

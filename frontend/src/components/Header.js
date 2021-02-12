@@ -39,7 +39,7 @@ const Header = () => {
       } else {
         siteHeader.current.style.height = 'auto';
         searchDiv.current.style.width = '';
-        searchDiv.current.style.top = '20px';
+        searchDiv.current.style.top = '15px';
       }
     };
 

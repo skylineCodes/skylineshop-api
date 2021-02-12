@@ -132,7 +132,7 @@ const HomeScreen = ({ match }) => {
       <div className='gap-element'></div>
       <section className='offer-section'>
         <div className='offer-header'>
-          <h1>Processing</h1>
+          <h1>How It works</h1>
         </div>
         <div className='is-divider'></div>
         <div className='offer-gap-element'></div>
