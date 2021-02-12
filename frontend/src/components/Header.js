@@ -5,7 +5,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Nav, Navbar, Badge, NavDropdown } from 'react-bootstrap';
 import { logout } from '../actions/userActions';
 import SearchBox from './SearchBox';
-import logo from '../SkylineCode-logo-png_logo.png';
+import logo from '../skylineshop.svg';
 import { getAllCart } from '../actions/cartActions';
 import '../css/header.css';
 

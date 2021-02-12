@@ -241,7 +241,7 @@ const BlogScreen = () => {
           </div>
         </section>
 
-        <footer>
+        {/* <footer>
           <div class='social-links'>
             <a href='#'>
               <i class='fab fa-facebook-f'></i>
@@ -257,7 +257,7 @@ const BlogScreen = () => {
             </a>
           </div>
           <span>Art.Design Blog Page</span>
-        </footer>
+        </footer> */}
       </>
     );
 }
