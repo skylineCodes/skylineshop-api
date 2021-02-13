@@ -5,7 +5,7 @@ main {
 body {
     color: #3d4246;
     font-family: 'Lato';
-    overflow:hidden;
+    overflow-x: hidden;
 }
 
 h1 {
