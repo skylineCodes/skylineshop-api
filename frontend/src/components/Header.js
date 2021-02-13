@@ -40,7 +40,6 @@ const Header = () => {
       //   transition: all 2s ease;
       // }
       if (value === true) {
-        searchNav.current.style.transition = 'all 2s ease';
         searchDiv.current.style.width = '100%';
         searchDiv.current.style.top = '7px';
         siteHeader.current.style.height = '5rem';
