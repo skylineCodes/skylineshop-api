@@ -32,14 +32,24 @@ const Header = () => {
     const openSearchFunction = (value) => {
       setOpenSearch(value);
 
+      // .transform {
+      //   -webkit-transition: all 2s ease;  
+      //   -moz-transition: all 2s ease;  
+      //   -o-transition: all 2s ease;  
+      //   -ms-transition: all 2s ease;  
+      //   transition: all 2s ease;
+      // }
       if (value === true) {
+        searchNav.current.style.transition = 'all 2s ease';
         searchDiv.current.style.width = '100%';
-        searchDiv.current.style.top = '0';
-        siteHeader.current.style.height = '4rem';
+        searchDiv.current.style.top = '7px';
+        siteHeader.current.style.height = '5rem';
+        searchNav.current.style.marginRight = '1rem';
       } else {
         siteHeader.current.style.height = 'auto';
         searchDiv.current.style.width = '';
         searchDiv.current.style.top = '15px';
+        searchNav.current.style.marginRight = 'auto';
       }
     };
 
@@ -61,6 +71,7 @@ const Header = () => {
   const searchDiv = useRef();
   const siteHeader = useRef();
   const headerLinks = useRef();
+  const searchNav = useRef();
 
     return (
       <>
@@ -157,9 +168,13 @@ const Header = () => {
                   </Nav>
                 ) : (
                   <Nav className='header-links'>
-                  <Nav.Link className='links_icons' as={RouterLink} to='/login'>
-                    Log In
-                  </Nav.Link>
+                    <Nav.Link
+                      className='links_icons'
+                      as={RouterLink}
+                      to='/login'
+                    >
+                      Log In
+                    </Nav.Link>
                   </Nav>
                 )}
                 <Nav.Link className='links_icons' as={RouterLink} to='/cart'>
@@ -172,9 +187,9 @@ const Header = () => {
                 </Nav.Link>
               </Navbar.Collapse>
               <Nav ref={searchDiv} className='search_div'>
-                <Nav.Link className='search_link'>
+                <Nav.Link ref={searchNav} className='search_nav'>
                   {openSearch ? (
-                    <div class='form-group-span'>
+                    <div className='search_link'>
                       <Route
                         render={({ history }) => (
                           <SearchBox history={history} />

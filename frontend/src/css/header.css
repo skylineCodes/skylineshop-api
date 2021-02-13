@@ -1,13 +1,11 @@
 .search-header {
+    background: #fff;
+    border-radius: 2rem;
+    padding: 0rem 1rem;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0rem 5rem;
-    transition: all 0.2s 0.7s;
-    overflow: hidden;
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
+    width: 90%;
+    justify-content: space-between;
+    border: 1px solid;
 }
 
 button.navbar-toggler {
@@ -18,37 +16,33 @@ button.navbar-toggler {
     display: none;
 }
 
-.search-header {
-    width: 95%;
-    height: 1.5rem;
-    transition: all 0.5s cubic-bezier(0.29, 0.63, 0.44, 1);
-}
-
-.form-group-div {
-    width: 90%;
-    height: inherit;
-}
-
-.search-input {
+.search-input{
+    font-family: var(--Roboto);
+    font-size: 1.1rem;
     width: 100%;
+    outline: 0;
+    padding: 0.6rem 0;
+    border: none;
+}
+
+.search-input::placeholder{
+    text-transform: capitalize;
+}
+
+.search-btn{
+    width: 40px;
+    font-size: 1.1rem;
+    color: var(--dark);
+    border: none;
+    background: transparent;
+    outline: 0;
+    cursor: pointer;
 }
 
 .form-group-span {
     display: flex;
     justify-content: center;
     width: 100%;
-}
-
-.form-group-div .fa-search {
-    position: absolute;
-    top: auto;
-    font-size: 1rem;
-    width: 5%;
-    height: inherit;
-    background: #273647;
-    text-align: center;
-    padding: 3px 3px;
-    color: #fff;
 }
 
 .form-group-span .search {
@@ -101,18 +95,24 @@ button.navbar-toggler {
         display: block;
     }
 
-    .form-group-div {
-        width: 90%;
-        height: 33px;
+    .search_link {
+        background: #fff;
+        display: flex;
+        justify-content: space-between;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .search_link i.fa-times {
+        top: 1.5rem;
+        position: absolute;
+        right: 0;
+        font-size: 1rem;
+        cursor: pointer;
     }
 
     .search-header {
-        width: 95%;
-    }
-
-    .search-input {
         width: 100%;
-        height: 33px;
     }
 
     .form-group-span .fa-times {
@@ -124,18 +124,6 @@ button.navbar-toggler {
         width: 5%;
         color: #273647;
         padding: 5px 5px;
-    }
-
-    .form-group-div .fa-search {
-        position: absolute;
-        top: 15px;
-        font-size: 1rem;
-        width: 5%;
-        height: inherit;
-        background: #273647;
-        text-align: center;
-        padding: 10px 10px;
-        color: #fff;
     }
 
     .search_icon_mobile .fa-search {
@@ -153,13 +141,8 @@ button.navbar-toggler {
         width: 100%;
     }
 
-    .search-input {
-        width: 70%;
-        height: 33px;
-    }
-
-    .form-group-div .fa-search {
-        width: auto;
+    .search-input{
+        padding: 0.8rem 0;
     }
 
     .form-group-span .fa-times {
@@ -168,5 +151,9 @@ button.navbar-toggler {
 
     .search_div {
         top: 15px;
+    }
+
+    .search-header {
+        width: 100%;
     }
 }

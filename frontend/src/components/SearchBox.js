@@ -24,19 +24,21 @@ const SearchBox = ({ history }) => {
   return (
     <>
       <Form onSubmit={submitHandler} className='search-header'>
-        <div class='form-group-div'>
-          <input
-            class='search-input'
-            type='text'
-            name='q'
-            placeholder='Search'
-            value={keyword}
-            onChange={(e) => setKeyword(e.target.value)}
-          />
-          <a type='submit' onClick={() => clickHandler(keyword)}>
-            <i class='fas fa-search'></i>
-          </a>
-        </div>
+        <input
+          class='search-input'
+          type='text'
+          name='q'
+          placeholder='Search'
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+        />
+        <button
+          type='submit'
+          class='search-btn'
+          onClick={() => clickHandler(keyword)}
+        >
+          <i class='fas fa-search'></i>
+        </button>
       </Form>
     </>
   );
