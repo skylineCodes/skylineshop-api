@@ -2,10 +2,11 @@ main {
     min-height: 80vh;
 }
 
-/* body {
+body {
     color: #3d4246;
     font-family: 'Lato';
-} */
+    overflow:hidden;
+}
 
 h1 {
     font-size: 1.8rem;
