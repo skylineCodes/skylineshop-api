@@ -1,4 +1,5 @@
 import React from 'react'
+import { LinkContainer } from 'react-router-bootstrap';
 import '../css/blog.css';
 
 const BlogScreen = () => {
@@ -32,65 +33,89 @@ const BlogScreen = () => {
               <p>recent arts & designs on the blog</p>
             </div>
 
-            <div class = "design-content">
-              <div class = "design-item">
-                <div class = "design-img">
-                  <img src = "images/art-design-1.jpg" alt = "" />
-                  <span><i class = "far fa-heart"></i> 22</span>
+            <div class='design-content'>
+              <div class='design-item'>
+                <div class='design-img'>
+                  <img src='images/art-design-1.jpg' alt='' />
+                  <span>
+                    <i class='far fa-heart'></i> 22
+                  </span>
                   <span>Art & Design</span>
                 </div>
-                <div class = "design-title">
-                  <a href = "#">make an awesome art portfolio for college or university</a>
+                <div class='design-title'>
+                  <a href='#'>
+                    make an awesome art portfolio for college or university
+                  </a>
                 </div>
               </div>
-              <div class = "design-item">
-                <div class = "design-img">
-                  <img src = "images/art-design-2.jpg" alt = "" />
-                  <span><i class = "far fa-heart"></i> 22</span>
+              <div class='design-item'>
+                <div class='design-img'>
+                  <img src='images/art-design-2.jpg' alt='' />
+                  <span>
+                    <i class='far fa-heart'></i> 22
+                  </span>
                   <span>Art & Design</span>
                 </div>
-                <div class = "design-title">
-                  <a href = "#">make an awesome art portfolio for college or university</a>
+                <div class='design-title'>
+                  <a href='#'>
+                    make an awesome art portfolio for college or university
+                  </a>
                 </div>
               </div>
-              <div class = "design-item">
-                <div class = "design-img">
-                  <img src = "images/art-design-3.jpg" alt = "" />
-                  <span><i class = "far fa-heart"></i> 22</span>
+              <div class='design-item'>
+                <div class='design-img'>
+                  <img src='images/art-design-3.jpg' alt='' />
+                  <span>
+                    <i class='far fa-heart'></i> 22
+                  </span>
                   <span>Art & Design</span>
                 </div>
-                <div class = "design-title">
-                  <a href = "#">make an awesome art portfolio for college or university</a>
+                <div class='design-title'>
+                  <a href='#'>
+                    make an awesome art portfolio for college or university
+                  </a>
                 </div>
               </div>
-              <div class = "design-item">
-                <div class = "design-img">
-                  <img src = "images/art-design-4.jpg" alt = "" />
-                  <span><i class = "far fa-heart"></i> 22</span>
+              <div class='design-item'>
+                <div class='design-img'>
+                  <img src='images/art-design-4.jpg' alt='' />
+                  <span>
+                    <i class='far fa-heart'></i> 22
+                  </span>
                   <span>Art & Design</span>
                 </div>
-                <div class = "design-title">
-                  <a href = "#">make an awesome art portfolio for college or university</a>
+                <div class='design-title'>
+                  <a href='#'>
+                    make an awesome art portfolio for college or university
+                  </a>
                 </div>
               </div>
-              <div class = "design-item">
-                <div class = "design-img">
-                  <img src = "images/art-design-5.jpg" alt = "" />
-                  <span><i class = "far fa-heart"></i> 22</span>
+              <div class='design-item'>
+                <div class='design-img'>
+                  <img src='images/art-design-5.jpg' alt='' />
+                  <span>
+                    <i class='far fa-heart'></i> 22
+                  </span>
                   <span>Art & Design</span>
                 </div>
-                <div class = "design-title">
-                  <a href = "#">make an awesome art portfolio for college or university</a>
+                <div class='design-title'>
+                  <a href='#'>
+                    make an awesome art portfolio for college or university
+                  </a>
                 </div>
               </div>
-              <div class = "design-item">
-                <div class = "design-img">
-                  <img src = "images/art-design-6.jpg" alt = "" />
-                  <span><i class = "far fa-heart"></i> 22</span>
+              <div class='design-item'>
+                <div class='design-img'>
+                  <img src='images/art-design-6.jpg' alt='' />
+                  <span>
+                    <i class='far fa-heart'></i> 22
+                  </span>
                   <span>Art & Design</span>
                 </div>
-                <div class = "design-title">
-                  <a href = "#">make an awesome art portfolio for college or university</a>
+                <div class='design-title'>
+                  <a href='#'>
+                    make an awesome art portfolio for college or university
+                  </a>
                 </div>
               </div>
             </div>
@@ -119,7 +144,9 @@ const BlogScreen = () => {
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                     Omnis libero quas ipsum laudantium nihil! Quaerat.
                   </p>
-                  <a href='#'>Read More</a>
+                  <LinkContainer to={`/blog/1`}>
+                    <a href='#'>Read More</a>
+                  </LinkContainer>
                 </div>
               </div>
               <div class='blog-item'>
@@ -136,7 +163,9 @@ const BlogScreen = () => {
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                     Omnis libero quas ipsum laudantium nihil! Quaerat.
                   </p>
-                  <a href='#'>Read More</a>
+                  <LinkContainer to={`/blog/2`}>
+                    <a href='#'>Read More</a>
+                  </LinkContainer>
                 </div>
               </div>
               <div class='blog-item'>
@@ -153,7 +182,9 @@ const BlogScreen = () => {
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                     Omnis libero quas ipsum laudantium nihil! Quaerat.
                   </p>
-                  <a href='#'>Read More</a>
+                  <LinkContainer to={`/blog/3`}>
+                    <a href='#'>Read More</a>
+                  </LinkContainer>
                 </div>
               </div>
               <div class='blog-item'>
@@ -170,7 +201,9 @@ const BlogScreen = () => {
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                     Omnis libero quas ipsum laudantium nihil! Quaerat.
                   </p>
-                  <a href='#'>Read More</a>
+                  <LinkContainer to={`/blog/4`}>
+                    <a href='#'>Read More</a>
+                  </LinkContainer>
                 </div>
               </div>
               <div class='blog-item'>
@@ -187,7 +220,9 @@ const BlogScreen = () => {
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                     Omnis libero quas ipsum laudantium nihil! Quaerat.
                   </p>
-                  <a href='#'>Read More</a>
+                  <LinkContainer to={`/blog/5`}>
+                    <a href='#'>Read More</a>
+                  </LinkContainer>
                 </div>
               </div>
               <div class='blog-item'>
@@ -204,7 +239,9 @@ const BlogScreen = () => {
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                     Omnis libero quas ipsum laudantium nihil! Quaerat.
                   </p>
-                  <a href='#'>Read More</a>
+                  <LinkContainer to={`/blog/6`}>
+                    <a href='#'>Read More</a>
+                  </LinkContainer>
                 </div>
               </div>
             </div>

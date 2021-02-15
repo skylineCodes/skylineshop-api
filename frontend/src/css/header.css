@@ -143,6 +143,8 @@ button.navbar-toggler {
 
     .search-input{
         padding: 0.8rem 0;
+        width: 70%;
+        height: 33px;
     }
 
     .form-group-span .fa-times {
@@ -155,5 +157,9 @@ button.navbar-toggler {
 
     .search-header {
         width: 100%;
+    }
+
+    .form-group-div .fa-search {
+        width: auto;
     }
 }

@@ -19,15 +19,19 @@ import OrderListScreen from './screens/OrderListScreen';
 import ProductEditScreen from './screens/ProductEditScreen';
 import UserEditScreen from './screens/UserEditScreen';
 import SearchScreen from './screens/SearchScreen';
+import BlogDetailsScreen from './screens/BlogDetailsScreen';
+import BlogListScreen from './screens/BlogListScreen';
+import BlogCreateScreen from './screens/BlogCreateScreen';
 
 const App = () => {
   return (
-    <div>
+    <>
       <Router>
         <Header />
         <main>
           <Container fluid>
-            <Route path='/blog' component={BlogScreen} />
+            <Route exact path='/blog' component={BlogScreen} />
+            <Route path='/blog/:id' component={BlogDetailsScreen} />
             <Route path='/login' component={LoginScreen} />
             <Route path='/payment' component={PaymentScreen} />
             <Route path='/admin/userlist' component={UserListScreen} />
@@ -35,6 +39,13 @@ const App = () => {
               exact
               path='/admin/productlist'
               component={ProductListScreen}
+            />
+            <Route exact path='/admin/bloglist' component={BlogListScreen} />
+            <Route path='/admin/blog/create' component={BlogCreateScreen} />
+            <Route
+              exact
+              path='/admin/bloglist/:page'
+              component={BlogListScreen}
             />
             <Route
               exact
@@ -66,7 +77,7 @@ const App = () => {
         </main>
         <Footer />
       </Router>
-    </div>
+    </>
   );
 }
 

@@ -2,6 +2,7 @@ footer{
     background: #f9f9f9;
     color: #273647;
     padding: 2rem 0;
+    margin-bottom: 0;
 }
 
 .footer-row, 
@@ -70,27 +71,6 @@ footer .social_links a {
 
     footer .footer-column:not(:last-child) {
         padding-bottom: 1rem;
-    }
-
-    .navbar-brand {
-        width: 100%;
-    }
-
-    .search-input {
-        width: 70%;
-        height: 33px;
-    }
-
-    .form-group-div .fa-search {
-        width: auto;
-    }
-
-    .form-group-span .fa-times {
-        margin-right: 2rem;
-    }
-
-    .search_div {
-        top: 15px;
     }
 
     .footer-row, 
