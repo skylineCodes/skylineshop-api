@@ -8,6 +8,7 @@ import connectDB from './config/db.js';
 import products from './routes/products.js';
 import user from './routes/user.js';
 import order from './routes/order.js';
+import blog from './routes/blog.js';
 import cart from './routes/cart.js';
 import upload from './routes/upload.js';
 import { notFound, errorHandler } from './middleware/middleware.js';
@@ -36,6 +37,7 @@ app.use('/api/users', user);
 app.use('/api/cart', cart);
 app.use('/api/orders', order);
 app.use('/api/upload', upload);
+app.use('/api/blogs', blog);
 
 app.get('/api/config/paypal', (req, res) => 
     res.send(process.env.PAYPAL_CLIENT_ID)
