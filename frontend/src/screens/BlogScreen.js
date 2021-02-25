@@ -137,7 +137,6 @@ const BlogScreen = () => {
           </div>
         </section>
 
-
         <section class='blog' id='blog'>
           <div class='container'>
             <div class='title'>
