@@ -5,14 +5,12 @@ import { Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../components/Loader';
 import FormContainer from '../components/FormContainer';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import {
+  CKEditor,
+} from '@ckeditor/ckeditor5-react';
+import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import { createBlog } from '../actions/blogActions';
 import { CREATE_BLOG_RESET } from '../constants/blogConstants';
-// import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
-// import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
-// import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
-// import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 
 import parse from 'html-react-parser';
 import Message from '../components/Message';
@@ -74,6 +72,30 @@ const BlogCreateScreen = ({ match, history }) => {
     );
   };
 
+  const editorConfiguration = {
+    toolbar: [
+      'Heading',
+      'bold',
+      'italic',
+      'Link',
+      'BulletedList',
+      'NumberedList',
+      'Indent',
+      'Outdent',
+      'BlockQuote',
+      'InsertTable',
+      'undo',
+      'redo',
+      'CodeBlock',
+      'ImageUpload',
+      'code',
+      'mediaEmbed',
+    ],
+    ckfinder: {
+      uploadUrl: '/ckeditor/upload',
+    },
+  };
+
   return (
     <>
       <Link to='/admin/bloglist' className='btn btn-light my-3'>
@@ -112,12 +134,8 @@ const BlogCreateScreen = ({ match, history }) => {
             <Form.Label>Content</Form.Label>
             <div className='editor'>
               <CKEditor
-                editor={ClassicEditor}
-                config={{
-                  ckfinder: {
-                    uploadUrl: '/ckeditor/upload',
-                  },
-                }}
+                editor={Editor}
+                config={editorConfiguration}
                 onInit={(editor) => {}}
                 data={content}
                 onChange={(e, editor) => {
@@ -127,6 +145,7 @@ const BlogCreateScreen = ({ match, history }) => {
               />
             </div>
           </Form.Group>
+          <div>{ content }</div>
           <Button type='submit' variant='primary'>
             Publish to draft
           </Button>

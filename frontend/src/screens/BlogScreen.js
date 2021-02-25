@@ -160,7 +160,7 @@ const BlogScreen = () => {
                     </div>
                     <div class='blog-text'>
                       <span>{post.createdAt.substring(0, 10)}</span>
-                      <h2>{post.title}</h2>
+                      <h2>{post.title.substring(0, 20)}</h2>
                       <p>{parse(post.content.substring(0, 50))}</p>
                       <LinkContainer to={`/blog/${post._id}`}>
                         <a href='#'>Read More</a>
