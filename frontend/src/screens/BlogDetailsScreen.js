@@ -1,10 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import Message from '../components/Message';
+import Loader from '../components/Loader';
+import { listBlogDetails } from '../actions/blogActions';
+import parse from 'html-react-parser';
 import '../css/blog-details.css';
 
 const BlogDetailsScreen = ({ match, history }) => {
     const blogId = match.params.id;
 
-    return (
+    const dispatch = useDispatch();
+
+    const blogDetails = useSelector((state) => state.blogDetails);
+    const { post, loading, error } = blogDetails;
+
+    useEffect(() => {
+      dispatch(listBlogDetails(blogId));
+    }, [dispatch]);
+
+    return loading ? (
+      <Loader />
+    ) : error ? (
+      <Message variant='danger'>{error}</Message>
+    ) : (
       <>
         <div className='blog-inner'>
           <article className='post-full'>
@@ -14,13 +33,10 @@ const BlogDetailsScreen = ({ match, history }) => {
                   className='post-full-meta-date'
                   dateTime='february 14, 2021'
                 >
-                  february 14, 2021
+                  {post.createdAt.substring(0, 10)}
                 </time>
               </section>
-              <h1 className='post-full-title'>
-                How I Went from Hackathons to CTO of a 20 Person SaaS Company in
-                3 Years
-              </h1>
+              <h1 className='post-full-title'>{post.title}</h1>
             </header>
             <div className='post-full-author-header'>
               <section className='author-card'>
@@ -31,26 +47,17 @@ const BlogDetailsScreen = ({ match, history }) => {
                 />
                 <section className='author-card-content author-card-content-no-bio'>
                   <h4 className='author-card-name'>
-                    <a href='#'>Onakoya Korede</a>
+                    <a href='#'>{post.user.name}</a>
                   </h4>
                 </section>
               </section>
             </div>
             <figure className='post-full-image'>
-              <img src='../images/laptop.jpg' alt='laptop' />
+              <img src={post.image} alt={post.title} />
             </figure>
             <section className='post-full-content'>
               <div className='post-content'>
-                <p className='paragraph-one'>
-                  In this article I will share the story of how I became CTO of
-                  a software as a service (SaaS) company. It all started about 3
-                  years ago when I was going to hackathons for fun.{' '}
-                </p>
-                <p>
-                  At the end of the article you can find some tips and advice I
-                  would give to aspiring entrepreneurs as well as some reading
-                  recommendations.
-                </p>
+                <p>{parse(post.content)}</p>
               </div>
             </section>
           </article>

@@ -1,8 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import parse from 'html-react-parser';
 import { LinkContainer } from 'react-router-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import Message from '../components/Message';
+import Loader from '../components/Loader';
+import { listBlog } from '../actions/blogActions';
 import '../css/blog.css';
 
 const BlogScreen = () => {
+  const dispatch = useDispatch();
+
+  const blogList = useSelector((state) => state.blogList);
+  const { loading, error, posts } = blogList;
+
+  
+  useEffect(() => {
+    dispatch(listBlog());
+  }, [dispatch]);
+
     return (
       <>
         <div className='header'>
@@ -129,122 +144,32 @@ const BlogScreen = () => {
               <p>recent blogs about art & design</p>
             </div>
 
-            <div class='blog-content'>
-              <div class='blog-item'>
-                <div class='blog-img'>
-                  <img src='images/blog-p-1.jpg' alt='' />
-                  <span>
-                    <i class='far fa-heart'></i>
-                  </span>
-                </div>
-                <div class='blog-text'>
-                  <span>20 January, 2020</span>
-                  <h2>Lorem ipsum, dolor sit amet consectetur adipisicing</h2>
-                  <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Omnis libero quas ipsum laudantium nihil! Quaerat.
-                  </p>
-                  <LinkContainer to={`/blog/1`}>
-                    <a href='#'>Read More</a>
-                  </LinkContainer>
-                </div>
+            {loading ? (
+              <Loader />
+            ) : error ? (
+              <Message variant='danger'>{error}</Message>
+            ) : (
+              <div class='blog-content'>
+                {posts.map((post) => (
+                  <div class='blog-item'>
+                    <div class='blog-img'>
+                      <img src={post.image} alt={post.title} />
+                      <span>
+                        <i class='far fa-heart'></i>
+                      </span>
+                    </div>
+                    <div class='blog-text'>
+                      <span>{post.createdAt.substring(0, 10)}</span>
+                      <h2>{post.title}</h2>
+                      <p>{parse(post.content.substring(0, 50))}</p>
+                      <LinkContainer to={`/blog/${post._id}`}>
+                        <a href='#'>Read More</a>
+                      </LinkContainer>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div class='blog-item'>
-                <div class='blog-img'>
-                  <img src='images/blog-p-1.jpg' alt='' />
-                  <span>
-                    <i class='far fa-heart'></i>
-                  </span>
-                </div>
-                <div class='blog-text'>
-                  <span>20 January, 2020</span>
-                  <h2>Lorem ipsum, dolor sit amet consectetur adipisicing</h2>
-                  <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Omnis libero quas ipsum laudantium nihil! Quaerat.
-                  </p>
-                  <LinkContainer to={`/blog/2`}>
-                    <a href='#'>Read More</a>
-                  </LinkContainer>
-                </div>
-              </div>
-              <div class='blog-item'>
-                <div class='blog-img'>
-                  <img src='images/blog-p-1.jpg' alt='' />
-                  <span>
-                    <i class='far fa-heart'></i>
-                  </span>
-                </div>
-                <div class='blog-text'>
-                  <span>20 January, 2020</span>
-                  <h2>Lorem ipsum, dolor sit amet consectetur adipisicing</h2>
-                  <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Omnis libero quas ipsum laudantium nihil! Quaerat.
-                  </p>
-                  <LinkContainer to={`/blog/3`}>
-                    <a href='#'>Read More</a>
-                  </LinkContainer>
-                </div>
-              </div>
-              <div class='blog-item'>
-                <div class='blog-img'>
-                  <img src='images/blog-p-1.jpg' alt='' />
-                  <span>
-                    <i class='far fa-heart'></i>
-                  </span>
-                </div>
-                <div class='blog-text'>
-                  <span>20 January, 2020</span>
-                  <h2>Lorem ipsum, dolor sit amet consectetur adipisicing</h2>
-                  <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Omnis libero quas ipsum laudantium nihil! Quaerat.
-                  </p>
-                  <LinkContainer to={`/blog/4`}>
-                    <a href='#'>Read More</a>
-                  </LinkContainer>
-                </div>
-              </div>
-              <div class='blog-item'>
-                <div class='blog-img'>
-                  <img src='images/blog-p-1.jpg' alt='' />
-                  <span>
-                    <i class='far fa-heart'></i>
-                  </span>
-                </div>
-                <div class='blog-text'>
-                  <span>20 January, 2020</span>
-                  <h2>Lorem ipsum, dolor sit amet consectetur adipisicing</h2>
-                  <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Omnis libero quas ipsum laudantium nihil! Quaerat.
-                  </p>
-                  <LinkContainer to={`/blog/5`}>
-                    <a href='#'>Read More</a>
-                  </LinkContainer>
-                </div>
-              </div>
-              <div class='blog-item'>
-                <div class='blog-img'>
-                  <img src='images/blog-p-1.jpg' alt='' />
-                  <span>
-                    <i class='far fa-heart'></i>
-                  </span>
-                </div>
-                <div class='blog-text'>
-                  <span>20 January, 2020</span>
-                  <h2>Lorem ipsum, dolor sit amet consectetur adipisicing</h2>
-                  <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Omnis libero quas ipsum laudantium nihil! Quaerat.
-                  </p>
-                  <LinkContainer to={`/blog/6`}>
-                    <a href='#'>Read More</a>
-                  </LinkContainer>
-                </div>
-              </div>
-            </div>
+            )}
           </div>
         </section>
 
@@ -277,24 +202,6 @@ const BlogScreen = () => {
             </div>
           </div>
         </section>
-
-        {/* <footer>
-          <div class='social-links'>
-            <a href='#'>
-              <i class='fab fa-facebook-f'></i>
-            </a>
-            <a href='#'>
-              <i class='fab fa-twitter'></i>
-            </a>
-            <a href='#'>
-              <i class='fab fa-instagram'></i>
-            </a>
-            <a href='#'>
-              <i class='fab fa-pinterest'></i>
-            </a>
-          </div>
-          <span>Art.Design Blog Page</span>
-        </footer> */}
       </>
     );
 }

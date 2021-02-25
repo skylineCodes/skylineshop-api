@@ -56,7 +56,7 @@ app.post('/ckeditor/upload', multipartyMiddleware, (req, res) => {
 
             res.status(200).json({
               uploaded: true,
-              url: targetPathUrl,
+              url: '/uploads/' + tempFile.name,
             });
 
             if (err) return console.log(err);

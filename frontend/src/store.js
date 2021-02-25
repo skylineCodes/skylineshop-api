@@ -2,6 +2,11 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import {
+  blogCreateReducer,
+  blogListReducer,
+  blogDetailsReducer,
+} from './reducers/blogReducers';
+import {
   productListReducer,
   productDetailReducer,
   productDeleteReducer,
@@ -32,6 +37,9 @@ import {
 } from './reducers/orderReducers';
 
 const reducer = combineReducers({
+  blogCreate: blogCreateReducer,
+  blogList: blogListReducer,
+  blogDetails: blogDetailsReducer,
   productList: productListReducer,
   productDetails: productDetailReducer,
   productDelete: productDeleteReducer,
