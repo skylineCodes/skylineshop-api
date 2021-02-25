@@ -157,7 +157,7 @@ const Header = () => {
                           </LinkContainer>
                           <LinkContainer to='/admin/bloglist'>
                             <NavDropdown.Item className='links_text'>
-                              Blogs
+                              Blogs 
                             </NavDropdown.Item>
                           </LinkContainer>
                         </>
