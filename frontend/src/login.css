@@ -125,9 +125,9 @@ form.sign-in-form {
   border-color: #4481eb;
 }
 
-button .btn {
+.login_btn {
   width: 150px;
-  background-color: #5995fd;
+  background: #5995fd;
   border: none;
   outline: none;
   height: 49px;
@@ -140,8 +140,8 @@ button .btn {
   transition: 0.5s;
 }
 
-button .btn:hover {
-  background-color: #4d84e2;
+.login_btn:hover {
+  background: #4d84e2;
 }
 
 .panels-container {
@@ -210,7 +210,7 @@ button .btn:hover {
   padding: 0.7rem 0;
 }
 
-button .btn.transparent {
+.login_btn.transparent {
   margin: 0;
   background: none;
   border: 2px solid #fff;
@@ -218,7 +218,6 @@ button .btn.transparent {
   height: 41px;
   font-weight: 600;
   font-size: 0.8rem;
-  padding-top: 0.5rem;
 }
 
 .right-panel .image,
@@ -326,7 +325,7 @@ button .btn.transparent {
     padding: 0.5rem 0;
   }
 
-  button .btn.transparent {
+  .login_btn.transparent {
     width: 110px;
     height: 35px;
     font-size: 0.7rem;

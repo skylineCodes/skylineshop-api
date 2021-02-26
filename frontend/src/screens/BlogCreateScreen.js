@@ -11,8 +11,6 @@ import {
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import { createBlog } from '../actions/blogActions';
 import { CREATE_BLOG_RESET } from '../constants/blogConstants';
-
-import parse from 'html-react-parser';
 import Message from '../components/Message';
 
 const BlogCreateScreen = ({ match, history }) => {

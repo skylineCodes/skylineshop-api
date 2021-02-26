@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { Form, Button, Row, Col } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
-import FormContainer from '../components/FormContainer';
 import { login } from '../actions/userActions';
 import { register } from '../actions/userActions';
 import '../login.css';
@@ -16,8 +14,6 @@ const LoginScreen = ({ location, history }) => {
 
     // Register Credentials
     const [name, setName] = useState('');
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [message, setMessage] = useState(null);
 
@@ -86,7 +82,7 @@ const LoginScreen = ({ location, history }) => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <input type='submit' value='Login' class='btn solid' />
+              <input type='submit' value='Login' class='login_btn solid' />
               <p class='social-text'>Or Sign in with social platforms</p>
               <div class='social-media'>
                 <a href='#' class='social-icon'>
@@ -110,7 +106,7 @@ const LoginScreen = ({ location, history }) => {
               <div class='input-field'>
                 <i class='fas fa-user'></i>
                 <input
-                  type='name'
+                  type='text'
                   placeholder='Enter name'
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -143,7 +139,7 @@ const LoginScreen = ({ location, history }) => {
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
               </div>
-              <input type='submit' class='btn' value='Sign up' />
+              <input type='submit' class='login_btn' value='Sign up' />
               <p class='social-text'>Or Sign up with social platforms</p>
               <div class='social-media'>
                 <a href='#' class='social-icon'>
@@ -175,7 +171,7 @@ const LoginScreen = ({ location, history }) => {
                 onClick={() => {
                   container.current.classList.add('sign-up-mode');
                 }}
-                class='btn transparent'
+                class='login_btn transparent'
                 id='sign-up-btn'
               >
                 Sign up
@@ -194,7 +190,7 @@ const LoginScreen = ({ location, history }) => {
                 onClick={() => {
                   container.current.classList.remove('sign-up-mode');
                 }}
-                class='btn transparent'
+                class='login_btn transparent'
                 id='sign-in-btn'
               >
                 Sign in

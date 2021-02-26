@@ -1,9 +1,5 @@
 import React from 'react'
 import { ChevronLeftOutlined, ChevronRightOutlined } from '@material-ui/icons';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-}));
 
 const Arrow = ({ direction, clickFunction, className }) => {
     const classes = useStyles();

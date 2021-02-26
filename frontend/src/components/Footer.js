@@ -52,10 +52,10 @@ const Footer = () => {
             </Col>
             <Col xs={12} sm={12} lg={4} className='text-center py-3'>
               <section className='social_links'>
-                <a>
+                <a href='#'>
                   <i class='fab fa-facebook-f'></i>
                 </a>
-                <a>
+                <a href='#'>
                   <i class='fab fa-twitter'></i>
                 </a>
               </section>
