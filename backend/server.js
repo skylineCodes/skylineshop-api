@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
 import fs from 'fs';
@@ -13,7 +14,6 @@ import cart from './routes/cart.js';
 import upload from './routes/upload.js';
 import { notFound, errorHandler } from './middleware/middleware.js';
 import multiparty from 'connect-multiparty';
-// import memwatch from 'memwatch-next';
 
 const __dirname = path.resolve();
 
@@ -32,6 +32,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.use(express.json());
+app.use(cors());
 
 app.use('/api/products', products);
 app.use('/api/users', user);
@@ -39,6 +40,18 @@ app.use('/api/cart', cart);
 app.use('/api/orders', order);
 app.use('/api/upload', upload);
 app.use('/api/blogs', blog);
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  );
+  if (req.method === 'OPTIONS') {
+    res.header('Accept-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
+    return res.status(200).json({});
+  }
+  next();
+});
 
 app.get('/api/config/paypal', (req, res) => 
     res.send(process.env.PAYPAL_CLIENT_ID)
